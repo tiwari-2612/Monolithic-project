@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,20 +51,27 @@ public class MainController
 
     }
     @PostMapping("/login")
-    public String signin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session){
+    public String signin(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session, Model model){
 
         Optional<Credential> credential=credentialRepository.findById(username);
 
         if(credential.isPresent() && credential.get().getPassword().equals(password)){
 
             session.setAttribute("username", username);
+            Optional<Userdetail> userdetail=userdetailRepository.findById(username);
+            if (userdetail.isPresent()){
+                model.addAttribute("userdetail",userdetail.get());
+            }
+
             return "dashboard";
         };
 
-        return"/";
-}
+        return "/";
+    }
+
+
     @PostMapping ("/detail")
-    public String detail(@RequestParam("fname") String fname , @RequestParam("lname") String lname,@RequestParam("email") String email,@RequestParam("phone") String phone, HttpSession session, @RequestParam("type") String type ){
+    public String detail(@RequestParam("fname") String fname , @RequestParam("lname") String lname,@RequestParam("email") String email,@RequestParam("phone") String phone, HttpSession session, @RequestParam("type") String type, Model model ){
         Userdetail ud=new Userdetail();
         Usertypelink utl = new Usertypelink();
         Random random = new Random();
@@ -79,7 +87,12 @@ public class MainController
         utl.setId(id= String.valueOf(x));
         userdetailRepository.save(ud);
         usertypelinkRepository.save(utl);
-        return "rocking";
+        session.getAttribute("username");
+        Optional<Userdetail> userdetail=userdetailRepository.findById((String) session.getAttribute("username"));
+        if (userdetail.isPresent()){
+            model.addAttribute("userdetail",userdetail.get());
+        }
+        return "dashboard";
 
     }
 

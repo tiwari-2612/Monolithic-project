@@ -3,36 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        /* Form Styles */
+        form {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 204, 0.8);
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Visiting Card Styles */
+        table {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: rgba(255, 255, 204, 0.8);
+            border-radius: 5px;
+            width: 300px;
+            font-family: Arial, sans-serif;
+        }
+
+        table tr td:first-child {
+            font-weight: bold;
+        }
+
+        /* Center Content */
+        body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .dashboard {
+            text-align: center;
+            flex-basis: 100%;
+            margin-right: 20px;
+        }
+
+        .form-container {
+            flex-basis: calc(50% - 20px);
+            margin-right: 20px;
+        }
+
+        .table-container {
+            flex-basis: calc(50% - 20px);
+        }
+    </style>
 </head>
 <body>
-<h1> DASHBOARD </h1>
-<h3>Welcome <span th:text="${session.username}"></span></h3>
-<div>
-<form action="detail" method="post">
-
+<div class="dashboard">
+    <h1> DASHBOARD </h1>
+    <h2>Welcome <span th:text="${session.username}"></span></h2>
+</div>
+<div class="form-container">
+    <form action="detail" method="post">
+        <h2>GIVE&NonBreakingSpace;YOUR CREDENTIALS</h2> <BR><BR>
         <label for="fname">First Name:</label>
-    <input type="text" id="fname" name="fname" required><br><br>
+        <input type="text" id="fname" name="fname" required><br><br>
 
-    <label for="lname">Last Name:</label>
-    <input type="text" id="lname" name="lname" required><br><br>
+        <label for="lname">Last Name:</label>
+        <input type="text" id="lname" name="lname" required><br><br>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required><br><br>
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
 
-    <label for="type">User Type:</label>
-    <select id="type" name="type">
-        <option value="Buyer">Buyer</option>
-        <option value="Seller">Seller</option>
-        <option value="Both">Both</option>
-    </select>
-        <br><br>
-    <input type="submit" value="Submit">
+        <label for="type">User Type:</label>
+        <select id="type" name="type">
+            <option></option>
+            <option value="Buyer">Buyer</option>
+            <option value="Seller">Seller</option>
+            <option value="Both">Both</option>
+        </select><br><br>
 
-</form>
-
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<div class="table-container">
+    <table>
+        <h2>YOUR&NonBreakingSpace;CREDENTIALS</h2>
+        <tr>
+            <td><b>First&NonBreakingSpace;Name:&NonBreakingSpace;</b></td>
+            <td><span th:text="${userdetail.fname}"></span></td>
+        </tr>
+        <tr>
+            <td><b>Last&NonBreakingSpace;Name:&NonBreakingSpace;</b></td>
+            <td><span th:text="${userdetail.lname}"></span></td>
+        </tr>
+        <tr>
+            <td><b>Email:&NonBreakingSpace;</b></td>
+            <td><span th:text="${userdetail.email}"></span></td>
+        </tr>
+        <tr>
+            <td><b>Phone:&NonBreakingSpace;</b></td>
+            <td><span th:text="${userdetail.phone}"></span></td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
