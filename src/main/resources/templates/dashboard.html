@@ -41,19 +41,7 @@
         }
 
         /* Visiting Card Styles */
-        table {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: rgba(255, 255, 204, 0.8);
-            border-radius: 5px;
-            width: 300px;
-            font-family: Arial, sans-serif;
-        }
 
-        table tr td:first-child {
-            font-weight: bold;
-        }
 
         /* Center Content */
         body {
@@ -75,9 +63,9 @@
             margin-right: 20px;
         }
 
-        .table-container {
-            flex-basis: calc(50% - 20px);
-        }
+
+
+
     </style>
 </head>
 <body>
@@ -105,32 +93,12 @@
             <option></option>
             <option value="Buyer">Buyer</option>
             <option value="Seller">Seller</option>
-            <option value="Both">Both</option>
+
         </select><br><br>
 
         <input type="submit" value="Submit">
     </form>
 </div>
-<div class="table-container">
-    <table>
-        <h2>YOUR&NonBreakingSpace;CREDENTIALS</h2>
-        <tr>
-            <td><b>First&NonBreakingSpace;Name:&NonBreakingSpace;</b></td>
-            <td><span th:text="${userdetail.fname}"></span></td>
-        </tr>
-        <tr>
-            <td><b>Last&NonBreakingSpace;Name:&NonBreakingSpace;</b></td>
-            <td><span th:text="${userdetail.lname}"></span></td>
-        </tr>
-        <tr>
-            <td><b>Email:&NonBreakingSpace;</b></td>
-            <td><span th:text="${userdetail.email}"></span></td>
-        </tr>
-        <tr>
-            <td><b>Phone:&NonBreakingSpace;</b></td>
-            <td><span th:text="${userdetail.phone}"></span></td>
-        </tr>
-    </table>
-</div>
+
 </body>
 </html>

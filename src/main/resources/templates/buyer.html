@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buyer Dashboard</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
+
+    .card {
+      background-color: #ffffcc; /* Change the background color to pale yellow */
+      width: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card table {
+      width: 100%;
+    }
+
+    .card table td {
+      padding: 8px 0;
+    }
+
+    .card b {
+      font-size: 18px;
+    }
+
+    .card span {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <table>
+    <tr><td><b>First Name:</b></td><td><span th:text="${userdetail.fname}"></span></td></tr>
+    <tr><td><b>Last Name:</b></td><td><span th:text="${userdetail.lname}"></span></td></tr>
+    <tr><td><b>Email:</b></td><td><span th:text="${userdetail.email}"></span></td></tr>
+    <tr><td><b>Phone:</b></td><td><span th:text="${userdetail.phone}"></span></td></tr>
+  </table>
+</div>
+
+</body>
+</html>
